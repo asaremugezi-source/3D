@@ -1,43 +1,4 @@
-
-def scalar_mult(val, vec):
-    v = []
-    for a in vec:
-        v.append(a*val)
-    return v
-
-def normalise(vec):
-    total = 0
-    for i in range(len(vec)):
-        total += vec[i]**2
-    total = total **.5
-    new_vec = scalar_mult(1/total, vec)
-    return new_vec
-
-def sub(v1, v2):
-    if len(v1) != len(v2):
-        raise
-    v = []
-    for i in range(len(v1)):
-        v.append(v1[i]-v2[i])
-    return v
-
-def add(v1, v2):
-    if len(v1) != len(v2):
-        raise
-    v = []
-    for i in range(len(v1)):
-        v.append(v1[i]+v2[i])
-    return v
-
-def dot(v1, v2):
-    if len(v1) != len(v2):
-        raise
-    return sum([v1[i] * v2[i] for i in range(len(v1))])
-
-def cross(v1, v2):
-    return [v1[1]*v2[2] - v1[2]*v2[1], v1[2]*v2[0] - v1[0]*v2[2], v1[0]*v2[1] - v1[1]*v2[0]]
-    
-
+from vectormath import *
 import pygame
 def f(p, v):
     if len(p)-1 != len(v):
@@ -81,15 +42,8 @@ screen = pygame.display.set_mode((512,512))
 count = 0
 val = lambda :count/10000
 import math
-while True:
-    
+while __name__ == "__main__":
     screen.fill("black")
-    """
-    for j in range(10):
-        for i in range(1, 100):
-             makeline([i*1280 - count, -500, j*20-100], [i*1280 - count, 500, j*20-100])
-    """
-    if True:
-        makecube(512, [2000, 0, 0], [math.cos(val()),math.sin(val()),0], [-math.sin(val()),math.cos(val()),0])
+    makecube(512, [2000, 0, 0], [math.cos(val()),math.sin(val()),0], [-math.sin(val()),math.cos(val()),0])
     count += 1
     pygame.display.flip()
